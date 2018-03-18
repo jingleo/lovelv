@@ -1,16 +1,8 @@
 lovelv
 ======
-this repository just for trying to learn how to use the git tool
 
-some experises about the command 
-the steps follows:
-1.git clone https://github.com/jingleo/lovelv.git
+个人博客仓库
 
-2.Then I can find a docment named lovelv on my local machine.
-so I create a file named helloworld.js in that docment.
+近期在整理的文档：
 
-3.git add helloworld.js
-
-4.git commit -m "helloworld"
-
-5.git push origin master
+[Wepy 小程序框架源码浅析](./miniApp/wepy/wepy.md)
