@@ -13,7 +13,7 @@ Sale.prototype.getPrice = function () {
 }
 // 装饰器方法
 Sale.prototype.decorate = function (decorator) {
-  var F = functon () {},
+  var F = function () {},
       overrides = this.constructor.decorators[decorator],
       i, newObj;
 
