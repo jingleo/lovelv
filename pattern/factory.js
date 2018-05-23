@@ -52,43 +52,69 @@ var nameConfirm = new LoginPopFactory('Confirm', '你的用户名不存在！');
 nameConfirm.show();
 
 // 抽象工厂
-var VehicleFactory=function(subType,superType){
+var VehicleFactory = function (subType, superType) {
   //判断抽象工厂中是否存在该抽象类
-  if(typeof VehicleFactory[subType] === 'function'){
-      //缓存类
-      function F();
-      //继承父类的属性与方法
-      F.prototype=new VehicleFactory[superType]();
-      //将子类的constructor指向子类
-      subType.constructor=subType;
-      //子类的原型继承“父类”
-      subType.prototype=new F();
-  }
-  else {
-      throw new Error('未创建该抽象类');
+  if (typeof VehicleFactory[subType] === 'function') {
+    //缓存类
+    function F();
+    //继承父类的属性与方法
+    F.prototype = new VehicleFactory[superType]();
+    //将子类的constructor指向子类
+    subType.constructor = subType;
+    //子类的原型继承“父类”
+    subType.prototype = new F();
+  } else {
+    throw new Error('未创建该抽象类');
   }
 }
 //小汽车
-VehicleFactory.Car=function(){
-  this.type='car';
+VehicleFactory.Car = function () {
+  this.type = 'car';
 };
-VehicleFactory.Car.prototype={
-  getPrice:function(){
-      return new Error('抽象方法不能调用');
+VehicleFactory.Car.prototype = {
+  getPrice: function () {
+    return new Error('抽象方法不能调用');
   },
-  getSpeed:function(){
-      return new Error('抽象方法不能调用');
+  getSpeed: function () {
+    return new Error('抽象方法不能调用');
   }
 };
 //公交车
-VehicleFactory.Bus=function(){
-  this.type='bus';
+VehicleFactory.Bus = function () {
+  this.type = 'bus';
 };
-VehicleFactory.Bus.prototype={
-  getPrice:function(){
-      return new Error('抽象方法不能调用');
+VehicleFactory.Bus.prototype = {
+  getPrice: function () {
+    return new Error('抽象方法不能调用');
   },
-  getPassengerNum:function(){
-      return new Error('抽象方法不能调用');
+  getPassengerNum: function () {
+    return new Error('抽象方法不能调用');
   }
 }
+
+var BMW = function (price, speed) {
+  this.price = price;
+  this.speed = speed;
+}
+VehicleFactory(BMW, 'Car');
+BMW.prototype = {
+  getPrice: function () {
+    return this.price;
+  },
+  getSpeed: function () {
+    return this.speed;
+  }
+};
+var YUTONG = function (price, passenger) {
+  this.price = price;
+  this.passenger = passenger;
+}
+VehicleFactory(YUTONG, 'Bus');
+YUTONG.prototype = {
+  getPrice: function () {
+    return this.price;
+  },
+  getPassengerNum: function () {
+    return this.passenger;
+  }
+};
